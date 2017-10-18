@@ -30,9 +30,9 @@ class ScaleIndex {
 	//@ requires intPart >= 0;
 	//@ requires fracPart >= 0 && fracPart < 100;
 	//@ requires size > 1;
-	//@ ensures this.intPart = intPart;
-	//@ ensures this.fracPart = fracPart;
-	//@ ensures this.size = size;
+	//@ ensures this.intPart == intPart;
+	//@ ensures this.fracPart == fracPart;
+	//@ ensures this.size == size;
 	ScaleIndex(int intPart, int fracPart, int size) {
 		this.intPart = intPart;
 		this.fracPart = fracPart;

@@ -21,9 +21,9 @@ class LookupTable1d {
 	 * @param lookupValues the table values
 	 */
 	//@ requires scale != null;
-	//@ requires lookupValues.length == scale.length;
-	//@ ensures this.scaleX = scale;
-	//@ ensures this.lookupValues = lookupValues;
+	//@ requires lookupValues.length == scale.values.length;
+	//@ ensures this.scaleX == scale;
+	//@ ensures this.lookupValues == lookupValues;
 	LookupTable1d(LookupScale scale, int[] lookupValues) {
 		this.scaleX = scale;
 		this.lookupValues = lookupValues;
@@ -35,7 +35,7 @@ class LookupTable1d {
 	 * @return the (interpolated) value from the table
 	 */
 	//@ requires sv != null;
-	//@ ensures \result > 0;
+	//@ ensures \result > 0 && \result < lookupValues[lookupValues.length-1];
 	int getValue(SensorValue sv) {
 		ScaleIndex si = scaleX.lookupValue(sv);
 		int i = si.getIntPart();

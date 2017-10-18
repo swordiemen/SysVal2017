@@ -21,15 +21,15 @@ class LookupTableLinear {
 	 */
 	//@ requires startValue >= 0;
 	//@ requires range > 1;
-	//@ ensures this.startValue = startValue;
-	//@ ensures this.range = range;
+	//@ ensures this.startValue == startValue;
+	//@ ensures this.range == range;
 	LookupTableLinear(int startValue, int range) {
 		this.startValue = startValue;
 		this.range = range;
 	}
 	
 	//@ requires si != null;
-	//@ ensures \result = this.startValue + (range * ((si.getIntPart()*100 + si.getFracPart())/(si.getSize() - 1))) / 100;
+	//@ ensures \result == this.startValue + (range * ((si.getIntPart()*100 + si.getFracPart())/(si.getSize() - 1))) / 100;
 	int getValue(ScaleIndex si) {
 		return this.startValue + (range * ((si.getIntPart()*100 + si.getFracPart())/si.getSize())) / 100;
 	}

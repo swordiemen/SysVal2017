@@ -28,6 +28,7 @@ class LookupScale {
 	 */
 	// CONTRACT 
 	//@ ensures this.values.length == size;
+	//@ requires size > 1;
 	//@ ensures this.values[0] == min;
 	//@ ensures this.values[this.values.length-1] == min; 
 	//TODO moet deze ^?
@@ -49,8 +50,8 @@ class LookupScale {
 	 * @return the scale index (integral and fractional part)
 	 */
 	// CONTRACT
-	//@ ensure sv != null;
-	//@ ensure result != null;
+	//@ ensures sv != null;
+	//@ ensures \result != null;
 	ScaleIndex lookupValue(SensorValue sv) {
 		int v = sv.getValue();
 		// First get the integral part
