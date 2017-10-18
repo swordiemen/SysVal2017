@@ -25,6 +25,7 @@ class SensorValue {
 	//@ ensures this.failSafe = failSafe;
 	//@ ensures this.minValue = minValue;
 	//@ ensures this.maxValue = maxValue;
+	//@ ensures this.value = failSafe;
 	SensorValue(int failSafe, int minValue, int maxValue) {
 		this.failSafe = failSafe;
 		this.minValue = minValue;
