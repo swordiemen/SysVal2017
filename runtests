@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export JMLUNITNG_DIR=/usr/local/jmlunitng-1.4
+
+java -cp $JMLUNITNG_DIR/lib/jmlunitng.jar:$JMLUNITNG_DIR/org.jmlspecs.OpenJMLUI_0.5.33/jmlruntime.jar:testbin com.beust.testng.TestNG test_lookupValue.xml

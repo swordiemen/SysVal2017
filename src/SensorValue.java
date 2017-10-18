@@ -8,7 +8,7 @@ class SensorValue {
 
 	//@ invariant value >= minValue && value <= maxValue;
 	int value;
-	// May need invariants that are equal to the ones for the constructor.
+	//REPORT May need invariants that are equal to the ones for the constructor.
 	final int failSafe;
 	final int minValue;
 	final int maxValue;

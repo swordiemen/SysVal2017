@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+
+<suite name="System Validation 2017 Homework 1" verbose="1">
+
+  <test name="lookupValue">
+    <classes>
+      <class name="LookupScale_JML_Test" />
+      <methods>
+        <include name=".*racEnabled.*"/>
+        <include name=".*lookupValue.*"/>
+      </methods>
+    </classes>
+  </test>
+
+</suite>

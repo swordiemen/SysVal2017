@@ -15,6 +15,9 @@ class ScaleIndex {
 	int size;      
 
 	// INVARIANT(S)
+	//@ invariant intPart >= 0;
+	//@ invariant fracPart >= 0 && fracPart < 100;
+	//@ invariant size > 1;
 	
 	// MODEL
 
@@ -24,7 +27,12 @@ class ScaleIndex {
 	 * @param fracPart fractional (0..99) part
 	 * @param size the size of the underlying scale
 	 */
-	// CONTRACT
+	//@ requires intPart >= 0;
+	//@ requires fracPart >= 0 && fracPart < 100;
+	//@ requires size > 1;
+	//@ ensures this.intPart = intPart;
+	//@ ensures this.fracPart = fracPart;
+	//@ ensures this.size = size;
 	ScaleIndex(int intPart, int fracPart, int size) {
 		this.intPart = intPart;
 		this.fracPart = fracPart;
@@ -34,7 +42,7 @@ class ScaleIndex {
 	/**
 	 * @return the integral part
 	 */
-	// CONTRACT
+	//@ pure;
 	int getIntPart() {
 		return intPart;
 	}
@@ -42,7 +50,7 @@ class ScaleIndex {
 	/**
 	 * @return the fractional part
 	 */
-	// CONTRACT
+	//@ pure;
 	int getFracPart() {
 		return fracPart;
 	}
@@ -50,7 +58,7 @@ class ScaleIndex {
 	/**
 	 * @return the size of the underlying scale
 	 */
-	// CONTRACT
+	//@ pure;
 	int getSize() {
 		return size;
 	}
