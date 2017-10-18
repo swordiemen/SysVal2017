@@ -46,12 +46,12 @@ class LookupTable1d {
 			//REPORT THIS IS WRONG, needs to be 0.f * vn
 			v = v + f;
 		}
+		// ASSERTION(S)
 		if(i == lookupValues.length) {
 			assert v == lookupValues[i];
 		}else {
 			assert v == lookupValues[i] + (f * lookupValues[i+1]) / 100;
 		}
-		// ASSERTION(S)
 		// (note, what you want to check here would normally
 		//  be part of the postcondition, but would produce a very
 		//  elaborate specification).
