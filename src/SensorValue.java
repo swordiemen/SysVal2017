@@ -6,7 +6,9 @@
  */
 class SensorValue {
 
+	//@ invariant value >= minValue && value <= maxValue;
 	int value;
+	// May need invariants that are equal to the ones for the constructor.
 	final int failSafe;
 	final int minValue;
 	final int maxValue;
@@ -18,7 +20,11 @@ class SensorValue {
 	 * @param minValue minimum allowable value for this sensor
 	 * @param maxValue maximum allowable value for this sensor
 	 */
-	// CONTRACT
+	//@ requires minValue < maxValue && minValue >= 0;
+	//@ requires failSafe >= minValue && failSafe <= maxValue;
+	//@ ensures this.failSafe = failSafe;
+	//@ ensures this.minValue = minValue;
+	//@ ensures this.maxValue = maxValue;
 	SensorValue(int failSafe, int minValue, int maxValue) {
 		this.failSafe = failSafe;
 		this.minValue = minValue;
@@ -31,7 +37,9 @@ class SensorValue {
 	 * or has to be substituted with a fail-safe. 
 	 * @param newValue newly read value
 	 */
-	// CONTRACT
+	//@ requires true;
+	//@ ensures (newValue < this.minValue || newValue > this.maxValue) => this.value = this.failSafe;
+	//@ ensures (newValue >= this.minValue && newValue <= this.maxValue) => this.value = newValue;
 	void readSensor(int newValue) {
 		if(newValue < this.minValue || newValue > this.maxValue) {
 			this.value = this.failSafe;
@@ -43,7 +51,7 @@ class SensorValue {
 	/**
 	 * @return the most recently read value
 	 */
-	// CONTRACT
+	//@ pure
 	int getValue() {
 		return this.value;
 	}
