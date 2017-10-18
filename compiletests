@@ -1,0 +1,8 @@
+#!/bin/bash
+export JMLUNITNG_DIR=/usr/local/jmlunitng-1.4
+
+mkdir -p testbin
+
+java -jar /home/fmt/openjml/openjml.jar -rac  -racCheckAssumptions -noPurityCheck -d testbin src/*.java
+
+javac -cp $JMLUNITNG_DIR/lib/jmlunitng.jar:testbin -d testbin tests/*.java

@@ -8,7 +8,7 @@ class SensorValue {
 
 	//@ invariant value >= minValue && value <= maxValue;
 	int value;
-	// May need invariants that are equal to the ones for the constructor.
+	//REPORT May need invariants that are equal to the ones for the constructor.
 	final int failSafe;
 	final int minValue;
 	final int maxValue;
@@ -25,6 +25,7 @@ class SensorValue {
 	//@ ensures this.failSafe = failSafe;
 	//@ ensures this.minValue = minValue;
 	//@ ensures this.maxValue = maxValue;
+	//@ ensures this.value = failSafe;
 	SensorValue(int failSafe, int minValue, int maxValue) {
 		this.failSafe = failSafe;
 		this.minValue = minValue;
