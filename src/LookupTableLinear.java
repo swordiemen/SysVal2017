@@ -12,7 +12,7 @@ class LookupTableLinear {
 	int range;
 	
 	//@ invariant startValue >= 0;
-	//@ invariant range > 1;
+	//@ invariant range > 0;
 
 	/**
 	 * Constructs a new linear lookup table
@@ -20,7 +20,7 @@ class LookupTableLinear {
 	 * @param range the value range
 	 */
 	//@ requires startValue >= 0;
-	//@ requires range > 1;
+	//@ requires range > 0;
 	//@ ensures this.startValue == startValue;
 	//@ ensures this.range == range;
 	LookupTableLinear(int startValue, int range) {

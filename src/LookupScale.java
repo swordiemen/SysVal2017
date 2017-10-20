@@ -58,7 +58,8 @@ class LookupScale {
 	 * @return the scale index (integral and fractional part)
 	 */
 	// CONTRACT
-	// @ ensures sv != null;
+
+	//@ ensures sv != null;
 	//@ ensures \result != null;
 	ScaleIndex lookupValue(SensorValue sv) {
 		int v = sv.getValue();

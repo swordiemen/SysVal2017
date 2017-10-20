@@ -52,7 +52,6 @@ class LookupTable1d {
 			//@ assert v == lookupValues[i];
 		}else {
 			 //@ assert v == lookupValues[i] + (f * (lookupValues[i+1] - lookupValues[i])) / 100;
-
 		}
 		// (note, what you want to check here would normally
 		//  be part of the postcondition, but would produce a very
