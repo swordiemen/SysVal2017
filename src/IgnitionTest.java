@@ -5,13 +5,22 @@
  */
 public class IgnitionTest {
 
-	//@ skipesc;
+	// @ skipesc;
 	public static void main(String[] args) {
-		SensorValue rpmSensor = new SensorValue(1000, 0, 8000);
+		SensorValue rpmSensor = new SensorValue(0, 0, 1000);
+		rpmSensor.readSensor(500);
+		LookupTableLinear table = new LookupTableLinear(0,1000);
+		LookupScale ls = new LookupScale(0, 1000, 3);
+		int val = table.getValue(ls.lookupValue(rpmSensor));
+		System.out.println(val); // should b e 500
+
+		rpmSensor = new SensorValue(1000, 0, 8000);
 		IgnitionModule im = new IgnitionModule(rpmSensor);
 		for(int r=2000; r<6000; r+=10) {
 			rpmSensor.readSensor(r);
 			System.out.println("RPM: "+rpmSensor.getValue()+", IGN: "+im.getIgnition());
 		}
+		
+		
 	}
 }

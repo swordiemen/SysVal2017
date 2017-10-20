@@ -22,10 +22,10 @@ class SensorValue {
 	 */
 	//@ requires minValue < maxValue && minValue >= 0;
 	//@ requires failSafe >= minValue && failSafe <= maxValue;
-	//@ ensures this.failSafe = failSafe;
-	//@ ensures this.minValue = minValue;
-	//@ ensures this.maxValue = maxValue;
-	//@ ensures this.value = failSafe;
+	//@ ensures this.failSafe == failSafe;
+	//@ ensures this.minValue == minValue;
+	//@ ensures this.maxValue == maxValue;
+	//@ ensures this.value == failSafe;
 	SensorValue(int failSafe, int minValue, int maxValue) {
 		this.failSafe = failSafe;
 		this.minValue = minValue;
@@ -38,9 +38,8 @@ class SensorValue {
 	 * or has to be substituted with a fail-safe. 
 	 * @param newValue newly read value
 	 */
-	//@ requires true;
-	//@ ensures (newValue < this.minValue || newValue > this.maxValue) => this.value = this.failSafe;
-	//@ ensures (newValue >= this.minValue && newValue <= this.maxValue) => this.value = newValue;
+	//@ ensures (newValue < this.minValue || newValue > this.maxValue) ==> this.value == this.failSafe;
+	//@ ensures (newValue >= this.minValue && newValue <= this.maxValue) ==> this.value == newValue;
 	void readSensor(int newValue) {
 		if(newValue < this.minValue || newValue > this.maxValue) {
 			this.value = this.failSafe;
@@ -61,7 +60,7 @@ class SensorValue {
 	 * Provide a human readable version of this object, makes 
 	 * the output of JMLUnitNG more readable.
 	 */
-	//@ skipesc;
+	// @ skipesc;
 	public String toString() {
 		return "SensorValue <"+minValue+"-"+maxValue+", FS="+failSafe+"> = ["+value+"]";
 	}
